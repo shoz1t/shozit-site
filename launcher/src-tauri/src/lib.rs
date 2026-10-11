@@ -67,7 +67,11 @@ fn log(app: &AppHandle, msg: &str) {
         let _ = std::fs::rename(&path, dir.join("launcher.old.log"));
     }
     let now = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).map(|d| d.as_secs()).unwrap_or(0);
+    let is_new = !path.exists();
     if let Ok(mut f) = std::fs::OpenOptions::new().create(true).append(true).open(&path) {
+        if is_new {
+            let _ = f.write_all("\u{feff}".as_bytes()); // метка UTF-8, чтобы русский текст открывался в любом блокноте
+        }
         let _ = writeln!(f, "[{}] {}", iso_utc(now), msg);
     }
 }

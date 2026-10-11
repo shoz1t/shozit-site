@@ -84,6 +84,7 @@ pub fn save(path: &Path, s: &Settings) -> std::io::Result<()> {
     std::fs::rename(&tmp, path)
 }
 
+#[allow(dead_code)] // нужна только тестам: сравнение версий делает интерфейс
 /// Сравнение версий вида 1.2.3 (нечисловые хвосты отбрасываются). true, если a новее b.
 pub fn is_newer(a: &str, b: &str) -> bool {
     fn parse(v: &str) -> Vec<u64> {
