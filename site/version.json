@@ -1,78 +1,78 @@
 {
-  "_readme": "Этот файл читают и сайт (кнопки «Скачать»), и лаунчер (проверка обновлений). Меняй только значения. url ведёт на архив в GitHub Releases, sha256 это хэш этого архива (строчные буквы), size в байтах. Пока sha256 пустой, лаунчер откажется ставить игру. Для лаунчера sha256 и size появятся после его первого релиза.",
-  "schema": 1,
-  "updated": "2026-10-11",
-  "launcher": {
-    "version": "0.1.0",
-    "downloads": {
-      "windows": {
-        "url": "https://github.com/shoz1t/shozit-site/releases/latest",
-        "sha256": "",
-        "size": 0
-      },
-      "linux": {
-        "url": "https://github.com/shoz1t/shozit-site/releases/latest",
-        "sha256": "",
-        "size": 0
-      }
-    }
-  },
-  "games": {
-    "rigged": {
-      "name": "Rigged",
-      "version": "0.2.0",
-      "channel": "demo",
-      "frozen": false,
-      "page": "rigged/",
-      "teaser": "",
-      "executable": {
-        "windows": "RIGGED.exe",
-        "linux": "RIGGED.x86_64"
-      },
-      "notes": {
-        "ru": "Демо: один первый триал.",
-        "en": "Demo: one first trial."
-      },
-      "downloads": {
-        "windows": {
-          "url": "https://github.com/shoz1t/rigged/releases/download/v0.2.0/RIGGED-v0.2.0-windows.zip",
-          "sha256": "00767cee800193483870a856779f6afae0d5363decece961c7821662fc8f8f9f",
-          "size": 57496356
-        },
-        "linux": {
-          "url": "https://github.com/shoz1t/rigged/releases/download/v0.2.0/RIGGED-v0.2.0-linux.zip",
-          "sha256": "03eff753d15a7cf1c3a7958cb2930aca5c8d192aaa20d400f33cbafa1cce22d8",
-          "size": 51486275
-        }
-      }
-    },
-    "deep-roll": {
-      "name": "Deep Roll",
-      "version": "0.1.0",
-      "channel": "demo",
-      "frozen": true,
-      "page": "deep-roll/",
-      "teaser": "",
-      "executable": {
-        "windows": "DeepRoll.exe",
-        "linux": "DeepRoll.x86_64"
-      },
-      "notes": {
-        "ru": "Демо v0.1.0. Игра заморожена, обновлений не будет.",
-        "en": "Demo v0.1.0. The game is frozen, no further updates."
-      },
-      "downloads": {
-        "windows": {
-          "url": "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-windows.zip",
-          "sha256": "d75c693303df04f3a001977aeedecbb5ff63ccd9c2ed9a646b41d13e62badafd",
-          "size": 118686857
-        },
-        "linux": {
-          "url": "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-linux.zip",
-          "sha256": "e2c8cbf27927dac6d6ad3bfa6f75e9fab27d7054e6367dd73dd25fd1b5c9c834",
-          "size": 109000717
-        }
-      }
-    }
-  }
+    "_readme":  "Этот файл читают и сайт (кнопки «Скачать»), и лаунчер (проверка обновлений). Меняй только значения. url ведёт на архив в GitHub Releases, sha256 это хэш этого архива (строчные буквы), size в байтах. Пока sha256 пустой, лаунчер откажется ставить игру. Для лаунчера sha256 и size появятся после его первого релиза.",
+    "schema":  1,
+    "updated":  "2026-10-11",
+    "launcher":  {
+                     "version":  "0.1.0",
+                     "downloads":  {
+                                       "windows":  {
+                                                       "url":  "https://github.com/shoz1t/shozit-site/releases/download/launcher-v0.1.0/ShozitLauncher-v0.1.0-windows-setup.exe",
+                                                       "sha256":  "ca6092229ce0c09d0939522547cca3ccae5adab68ac86d830a7261260ec88267",
+                                                       "size":  2927348
+                                                   },
+                                       "linux":  {
+                                                     "url":  "https://github.com/shoz1t/shozit-site/releases/download/launcher-v0.1.0/ShozitLauncher-v0.1.0-linux.AppImage",
+                                                     "sha256":  "abd300284e8992ebbef7d68da48076f6ec4fd852f8b60094cdf3260edbf90699",
+                                                     "size":  82414072
+                                                 }
+                                   }
+                 },
+    "games":  {
+                  "rigged":  {
+                                 "name":  "Rigged",
+                                 "version":  "0.2.0",
+                                 "channel":  "demo",
+                                 "frozen":  false,
+                                 "page":  "rigged/",
+                                 "teaser":  "",
+                                 "executable":  {
+                                                    "windows":  "RIGGED.exe",
+                                                    "linux":  "RIGGED.x86_64"
+                                                },
+                                 "notes":  {
+                                               "ru":  "Демо: один первый триал.",
+                                               "en":  "Demo: one first trial."
+                                           },
+                                 "downloads":  {
+                                                   "windows":  {
+                                                                   "url":  "https://github.com/shoz1t/rigged/releases/download/v0.2.0/RIGGED-v0.2.0-windows.zip",
+                                                                   "sha256":  "00767cee800193483870a856779f6afae0d5363decece961c7821662fc8f8f9f",
+                                                                   "size":  57496356
+                                                               },
+                                                   "linux":  {
+                                                                 "url":  "https://github.com/shoz1t/rigged/releases/download/v0.2.0/RIGGED-v0.2.0-linux.zip",
+                                                                 "sha256":  "03eff753d15a7cf1c3a7958cb2930aca5c8d192aaa20d400f33cbafa1cce22d8",
+                                                                 "size":  51486275
+                                                             }
+                                               }
+                             },
+                  "deep-roll":  {
+                                    "name":  "Deep Roll",
+                                    "version":  "0.1.0",
+                                    "channel":  "demo",
+                                    "frozen":  true,
+                                    "page":  "deep-roll/",
+                                    "teaser":  "",
+                                    "executable":  {
+                                                       "windows":  "DeepRoll.exe",
+                                                       "linux":  "DeepRoll.x86_64"
+                                                   },
+                                    "notes":  {
+                                                  "ru":  "Демо v0.1.0. Игра заморожена, обновлений не будет.",
+                                                  "en":  "Demo v0.1.0. The game is frozen, no further updates."
+                                              },
+                                    "downloads":  {
+                                                      "windows":  {
+                                                                      "url":  "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-windows.zip",
+                                                                      "sha256":  "d75c693303df04f3a001977aeedecbb5ff63ccd9c2ed9a646b41d13e62badafd",
+                                                                      "size":  118686857
+                                                                  },
+                                                      "linux":  {
+                                                                    "url":  "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-linux.zip",
+                                                                    "sha256":  "e2c8cbf27927dac6d6ad3bfa6f75e9fab27d7054e6367dd73dd25fd1b5c9c834",
+                                                                    "size":  109000717
+                                                                }
+                                                  }
+                                }
+              }
 }
