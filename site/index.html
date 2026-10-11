@@ -79,7 +79,7 @@
         <p class="label meta" data-i18n="home.rigged.meta">Windows · Linux · Godot</p>
         <div class="btn-row">
           <a class="btn" href="rigged/" data-i18n="dl.page">Страница игры</a>
-          <a class="btn btn--ghost" href="rigged/#download" data-i18n="dl.demo">Скачать демо</a>
+          <a class="btn btn--ghost" href="#launcher" data-i18n="dl.launcher">Скачать лаунчер</a>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
         <p class="label meta" data-i18n="home.dr.meta">Windows · Linux · Godot</p>
         <div class="btn-row">
           <a class="btn" href="deep-roll/" data-i18n="dl.page">Страница игры</a>
-          <a class="btn btn--ghost" href="deep-roll/#download" data-i18n="dl.demo">Скачать демо</a>
+          <a class="btn btn--ghost" href="#launcher" data-i18n="dl.launcher">Скачать лаунчер</a>
         </div>
         <p class="note" data-i18n="home.dr.note">Обновлений не будет. Старая версия остаётся доступной.</p>
       </div>
@@ -104,13 +104,18 @@
 
   <section class="launcher-sec" id="launcher">
     <div class="wrap">
-      <!-- TODO: после выхода лаунчера заменить плашку на скриншот лаунчера и кнопки data-dl="launcher:windows" / "launcher:linux" -->
-      <div class="plate grime">
-        <div>
+      <div class="plate grime launcher-plate">
+        <div class="launcher-text">
+          <p class="label" data-i18n="home.launcher.tag">Лаунчер Shozit</p>
           <h2 data-i18n="home.launcher.title">Лаунчер</h2>
           <p data-i18n="home.launcher.desc">Одно приложение для обеих игр: установка, запуск, проверка обновлений и новости студии. Работает в Windows и Linux.</p>
+          <div class="btn-row">
+            <a class="btn" href="https://github.com/shoz1t/shozit-site/releases/latest" data-dl="launcher:windows"><span data-i18n="dl.windows">Windows</span><small></small></a>
+            <a class="btn" href="https://github.com/shoz1t/shozit-site/releases/latest" data-dl="launcher:linux"><span data-i18n="dl.linux">Linux</span><small></small></a>
+          </div>
+          <p class="note" data-i18n="home.launcher.note">Игры устанавливаются только через лаунчер: он сам скачает нужную версию, проверит файлы и будет обновлять игру.</p>
         </div>
-        <p class="launcher-state" data-i18n="home.launcher.state">Лаунчер в разработке. Пока игры скачиваются со страниц игр.</p>
+        <figure class="shot launcher-shot"><img src="assets/img/launcher.webp" width="727" height="507" alt="Лаунчер Shozit: список игр, новости и кнопка установки" data-i18n-attr="alt:home.launcher.alt" loading="lazy" decoding="async"></figure>
       </div>
     </div>
   </section>

@@ -26,7 +26,9 @@
 .launcher-sec { padding-block: clamp(28px, 5vw, 56px); }
 .launcher-sec .plate { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px 48px; align-items: center; }
 .launcher-sec p { margin-top: 12px; color: var(--muted); }
-.launcher-state { font: 500 13px/1.6 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 1px dashed var(--accent); padding: 14px 16px; }
+.launcher-sec .btn-row { margin-top: 20px; }
+.launcher-sec .note { font: 500 12px/1.5 var(--f-mono); letter-spacing: .06em; }
+.launcher-shot { align-self: center; }
 
 .news-sec { padding-block: clamp(28px, 5vw, 56px) clamp(36px, 6vw, 72px); }
 .news-sec .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
