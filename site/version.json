@@ -1,0 +1,79 @@
+{
+    "_readme":  "Этот файл читают и сайт (кнопки «Скачать»), и лаунчер (проверка обновлений). Меняй только значения. url ведёт на архив в GitHub Releases, sha256 это хэш этого архива (строчные буквы), size в байтах. Пока sha256 пустой, лаунчер откажется ставить игру. Для лаунчера sha256 и size появятся после его первого релиза.",
+    "schema":  1,
+    "updated":  "2026-10-11",
+    "launcher":  {
+                     "version":  "0.1.0",
+                     "downloads":  {
+                                       "windows":  {
+                                                       "url":  "https://github.com/shoz1t/shozit-site/releases/latest",
+                                                       "sha256":  "",
+                                                       "size":  0
+                                                   },
+                                       "linux":  {
+                                                     "url":  "https://github.com/shoz1t/shozit-site/releases/latest",
+                                                     "sha256":  "",
+                                                     "size":  0
+                                                 }
+                                   }
+                 },
+    "games":  {
+                  "rigged":  {
+                                 "name":  "Rigged",
+                                 "version":  "0.1.0",
+                                 "channel":  "demo",
+                                 "frozen":  false,
+                                 "page":  "rigged/",
+                                 "teaser":  "",
+                                 "executable":  {
+                                                    "windows":  "RIGGED.exe",
+                                                    "linux":  "RIGGED.x86_64"
+                                                },
+                                 "notes":  {
+                                               "ru":  "Демо: один первый триал.",
+                                               "en":  "Demo: one first trial."
+                                           },
+                                 "downloads":  {
+                                                   "windows":  {
+                                                                   "url":  "https://github.com/shoz1t/rigged/releases/download/v0.1.0/RIGGED-v0.1.0-windows.zip",
+                                                                   "sha256":  "954fc9d7ce9341584062d023a73f7bbfa4f9b37032b76e666276956470358ccb",
+                                                                   "size":  56899290
+                                                               },
+                                                   "linux":  {
+                                                                 "url":  "https://github.com/shoz1t/rigged/releases/download/v0.1.0/RIGGED-v0.1.0-linux.zip",
+                                                                 "sha256":  "2c66402c9e7fbadd770111e69072cd6972635c8899e28faef420b1adc7ce7f47",
+                                                                 "size":  50889370
+                                                             }
+                                               }
+                             },
+                  "deep-roll":  {
+                                    "name":  "Deep Roll",
+                                    "version":  "0.1.0",
+                                    "channel":  "demo",
+                                    "frozen":  true,
+                                    "page":  "deep-roll/",
+                                    "teaser":  "",
+                                    "executable":  {
+                                                       "windows":  "DeepRoll.exe",
+                                                       "linux":  "DeepRoll.x86_64"
+                                                   },
+                                    "notes":  {
+                                                  "ru":  "Демо v0.1.0. Игра заморожена, обновлений не будет.",
+                                                  "en":  "Demo v0.1.0. The game is frozen, no further updates."
+                                              },
+                                    "downloads":  {
+                                                      "windows":  {
+                                                                      "url":  "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-windows.zip",
+                                                                      "sha256":  "d75c693303df04f3a001977aeedecbb5ff63ccd9c2ed9a646b41d13e62badafd",
+                                                                      "size":  118686857
+                                                                  },
+                                                      "linux":  {
+                                                                    "url":  "https://github.com/shoz1t/deep-roll/releases/download/v0.1.0/DeepRoll-v0.1.0-linux.zip",
+                                                                    "sha256":  "e2c8cbf27927dac6d6ad3bfa6f75e9fab27d7054e6367dd73dd25fd1b5c9c834",
+                                                                    "size":  109000717
+                                                                }
+                                                  }
+                                }
+              }
+}
+

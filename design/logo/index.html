@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shozit Developments, логотип</title>
+<style>
+  :root { --bg:#0d0c0a; --panel:#15130f; --cream:#e8dcc0; --muted:#9a917b; --amber:#d9a441; --line:#2c291f; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--cream); font:16px/1.5 "IBM Plex Sans", system-ui, "Segoe UI", sans-serif; padding-inline:16px; }
+  main { max-width:960px; margin-inline:auto; padding-block:32px 64px; display:grid; gap:28px; }
+  h1 { font-size:1.5rem; margin:0; }
+  p { margin:0; color:var(--muted); max-width:62ch; }
+  .stage { border:1px solid var(--line); padding:24px 16px; }
+  .stage img { display:block; width:100%; max-width:672px; height:auto; margin-inline:auto; }
+  .bg-rigged { background:#070b09; }
+  .bg-deep { background:#1b1a2e; }
+  .bg-studio { background:#0d0c0a; }
+  .row { display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  .grid .stage { display:grid; place-items:center; }
+  .grid img { width:100%; max-width:240px; }
+  .sizes { display:flex; gap:24px; align-items:center; flex-wrap:wrap; }
+  button { font:inherit; color:var(--cream); background:var(--panel); border:1px solid var(--steel,#5b6050); padding:8px 16px; cursor:pointer; }
+  button:hover { border-color:var(--amber); }
+  button:active { transform:translateY(1px); }
+  button:focus-visible { outline:2px solid var(--amber); outline-offset:2px; }
+  .cap { font-size:.85rem; color:var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Shozit Developments: логотип «Жетон»</h1>
+    <p>Анимация идёт около 2,3 секунды. Монета объёмная, с толщиной и рифлёным гуртом. Она падает, делает два оборота (на обороте видна «7» из слота), бьётся о стол и качается всё мельче. На ударе S вспыхивает янтарём, по ободу бежит свет, потом выезжает надпись.</p>
+  </header>
+
+  <section>
+    <div class="stage bg-studio"><img id="anim" src="shozit-logo-anim.svg" alt="Shozit Developments"></div>
+    <div class="row" style="margin-top:12px"><button id="replay" type="button">Повторить анимацию</button></div>
+  </section>
+
+  <section class="grid">
+    <div><div class="stage bg-rigged"><img src="shozit-logo.svg" alt="На фоне Rigged"></div><p class="cap">на фоне страницы Rigged</p></div>
+    <div><div class="stage bg-deep"><img src="shozit-logo.svg" alt="На фоне Deep Roll"></div><p class="cap">на фоне страницы Deep Roll</p></div>
+  </section>
+
+  <section>
+    <div class="sizes">
+      <img src="shozit-logo.svg" width="320" alt="320 px">
+      <img src="shozit-logo.svg" width="160" alt="160 px">
+      <img src="shozit-mark.svg" width="96" alt="Знак 96 px">
+      <img src="shozit-mark.svg" width="48" alt="Знак 48 px">
+      <img src="shozit-mark.svg" width="24" alt="Знак 24 px">
+    </div>
+    <p class="cap">Размеры: полный логотип 320 и 160 px, знак 96, 48 и 24 px (для favicon).</p>
+  </section>
+</main>
+<script>
+  document.getElementById('replay').addEventListener('click', function () {
+    document.getElementById('anim').src = 'shozit-logo-anim.svg?t=' + Date.now();
+  });
+</script>
+</body>
+</html>

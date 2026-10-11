@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>(function(){try{var l=new URLSearchParams(location.search).get('lang')||localStorage.getItem('lang')||((navigator.language||'ru').toLowerCase().indexOf('ru')===0?'ru':'en');if(l==='en')document.documentElement.className+=' lang-wait';}catch(e){}})();</script>
+<title data-i18n="dr.title">Deep Roll: демо v0.1.0 для Windows и Linux | Shozit Developments</title>
+<meta name="description" data-i18n-attr="content:dr.meta.desc" content="Deep Roll: пиксель-арт кликер про добычу руд с RNG и небольшим сюжетом. Демо v0.1.0 для Windows и Linux. Игра заморожена.">
+<meta name="theme-color" content="#14121f">
+<link rel="canonical" data-abs="href:/deep-roll/" href="https://shozit.ru/deep-roll/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Shozit Developments">
+<meta property="og:title" data-i18n-attr="content:dr.og.title" content="Deep Roll: демо v0.1.0">
+<meta property="og:description" data-i18n-attr="content:dr.og.desc" content="Пиксель-арт кликер про добычу руд. Уютное шахтёрское приключение, которое к концу становится мрачнее. Игра заморожена.">
+<meta property="og:image" data-abs="content:/assets/img/og-deep-roll.jpg" content="https://shozit.ru/assets/img/og-deep-roll.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" data-abs="content:/deep-roll/" content="https://shozit.ru/deep-roll/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/img/shozit-mark.svg" type="image/svg+xml">
+<link rel="icon" href="../assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+<link rel="preload" href="../assets/fonts/tiny5.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="../assets/fonts/plex-sans-400.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/deep-roll.css">
+<link rel="stylesheet" href="../assets/css/bg3d.css">
+<script src="../assets/js/app.js" defer></script>
+<script src="../assets/js/bg3d.js" defer></script>
+</head>
+<body class="t-deep">
+<a class="skip" href="#main" data-i18n="skip">К содержимому</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="../"><img src="../assets/img/shozit-mark.svg" width="40" height="42" alt=""><span>Shozit Developments</span></a>
+    <nav class="nav" data-i18n-attr="aria-label:nav.label" aria-label="Основная навигация">
+      <a href="../" data-i18n="nav.home">Студия</a>
+      <a href="../rigged/" data-i18n="nav.rigged">Rigged</a>
+      <a href="./" aria-current="page" data-i18n="nav.deeproll">Deep Roll</a>
+      <a href="../news/" data-i18n="nav.news">Новости</a>
+      <div class="lang" role="group" data-i18n-attr="aria-label:lang.label" aria-label="Язык"><button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="dr-hero">
+    <img class="bg" src="../assets/img/dr-map.webp" width="1600" height="790" alt="Карта шахтёрского посёлка на закате" data-i18n-attr="alt:dr.hero.alt" fetchpriority="high">
+    <div class="wrap">
+      <div class="frame dr-menu">
+        <p class="kicker" data-i18n="dr.hero.kicker">История о том, что осталось внизу</p>
+        <h1><img class="logo" src="../assets/img/dr-logo.webp" width="720" height="410" alt="Deep Roll" data-i18n-attr="alt:dr.logo.alt"></h1>
+        <p data-i18n="dr.hero.lead">Уютное шахтёрское приключение.</p>
+        <div class="btn-row"><a class="btn primary" href="#download" data-i18n="dl.demo">Скачать демо</a></div>
+        <p class="ver" data-i18n="dr.hero.ver">Демо v0.1.0 · заморожена</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <aside class="sign" role="note">
+      <h2 data-i18n="dr.frozen.title">Игра заморожена</h2>
+      <p data-i18n="dr.frozen.text">Обновлений не будет. Старая версия остаётся доступной.</p>
+    </aside>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 data-i18n="dr.about.title">Об игре</h2>
+      <div class="dr-about">
+        <div>
+          <p data-i18n="dr.about.p1">Пиксель-арт кликер про добычу руд в шахтах. Бьёшь киркой по породе, и случай решает, что выпадет: обычный уголь или редкий кристалл.</p>
+          <p data-i18n="dr.about.p2">Каждая руда получает редкость, чистоту, размер и мутацию. Продавай добычу, развивай древо улучшений, открывай новые шахты. Небольшая история начинается уютно и к концу становится мрачнее.</p>
+          <ul class="feat">
+            <li data-i18n="dr.f1">32 улучшения в четырёх ветках</li>
+            <li data-i18n="dr.f2">Семь мест: сарай, лавка, мастерская и четыре шахты</li>
+            <li data-i18n="dr.f3">Пять жителей посёлка и 13 заданий</li>
+            <li data-i18n="dr.f4">Коллекция руд, мутаций и артефактов</li>
+          </ul>
+        </div>
+        <div class="frame">
+          <dl class="spec">
+            <dt data-i18n="spec.genre">Жанр</dt><dd data-i18n="dr.spec.genre">Пиксель-арт, кликер, RNG</dd>
+            <dt data-i18n="spec.platforms">Платформы</dt><dd data-i18n="dr.spec.platforms">Windows, Linux</dd>
+            <dt data-i18n="spec.engine">Движок</dt><dd data-i18n="dr.spec.engine">Godot</dd>
+            <dt data-i18n="spec.status">Статус</dt><dd data-i18n="dr.spec.status">Демо v0.1.0, заморожена</dd>
+            <dt data-i18n="spec.langs">Язык игры</dt><dd data-i18n="dr.spec.langs">Только русский</dd>
+            <dt data-i18n="spec.input">Управление</dt><dd data-i18n="dr.spec.input">Мышь и клавиатура</dd>
+            <dt data-i18n="spec.version">Версия</dt><dd data-version="deep-roll">0.1.0</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 data-i18n="dr.shots.title">Скриншоты</h2>
+      <div class="dr-gallery">
+        <figure class="shot a"><img src="../assets/img/dr-menu.webp" width="1600" height="858" alt="Главное меню Deep Roll на фоне шахтёрского посёлка" data-i18n-attr="alt:dr.shot.menu.alt" loading="lazy" decoding="async"><figcaption data-i18n="dr.shot.menu">Главное меню.</figcaption></figure>
+        <figure class="shot b"><img src="../assets/img/dr-collection.webp" width="1400" height="772" alt="Экран коллекции: добытые руды с редкостью и ценой" data-i18n-attr="alt:dr.shot.collection.alt" loading="lazy" decoding="async"><figcaption data-i18n="dr.shot.collection">Коллекция Глубокой долины.</figcaption></figure>
+        <figure class="shot c"><img src="../assets/img/dr-tree.webp" width="1100" height="340" alt="Ветка улучшений кирки с иконками и связями" data-i18n-attr="alt:dr.shot.tree.alt" loading="lazy" decoding="async"><figcaption data-i18n="dr.shot.tree">Древо улучшений.</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="download">
+    <div class="wrap">
+      <h2 data-i18n="dr.dl.title">Скачать демо</h2>
+      <div class="frame dr-dl">
+        <div>
+          <p data-i18n="dr.dl.p">Распакуй архив и запусти Deep Roll. В Linux сначала разреши запуск файла командой chmod +x. Игра на русском языке.</p>
+          <p class="dl-note" data-i18n="dr.frozen.text">Обновлений не будет. Старая версия остаётся доступной.</p>
+        </div>
+        <div class="dl-list">
+          <!-- TODO: реальные ссылки на архивы задаются в site/version.json -->
+          <a class="btn primary" href="https://github.com/shoz1t/deep-roll/releases/latest" data-dl="deep-roll:windows"><span data-i18n="dl.windows">Windows</span><small></small></a>
+          <a class="btn primary" href="https://github.com/shoz1t/deep-roll/releases/latest" data-dl="deep-roll:linux"><span data-i18n="dl.linux">Linux</span><small></small></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span><span data-i18n="footer.rights">© 2026 Shozit Developments</span> · <span data-i18n="footer.dev">Разработчик: Shozit</span></span>
+    <button type="button" class="fx-toggle" aria-pressed="true" data-i18n="footer.fx">3D-фон</button>
+    <a href="https://github.com/shoz1t" data-i18n="footer.github">GitHub</a>
+  </div>
+</footer>
+</body>
+</html>
+
+
+

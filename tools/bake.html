@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>Bake: OG-картинки и иконки</title>
+<style>
+  body { margin: 0; background: #222; color: #ddd; font: 14px/1.5 system-ui, sans-serif; padding: 16px; }
+  canvas { max-width: 600px; display: block; margin: 8px 0; border: 1px solid #555; }
+</style>
+</head>
+<body>
+<p>Страница рисует картинки на canvas и отправляет их на локальный сервер (tools/serve.mjs . 5176 save).</p>
+<pre id="log"></pre>
+<script>
+(async function () {
+  var IMG = '/site/assets/img/', FONTS = '/site/assets/fonts/';
+  var log = function (s) { document.getElementById('log').textContent += s + '\n'; };
+  var load = function (src) { return new Promise(function (ok, bad) { var i = new Image(); i.onload = function () { ok(i); }; i.onerror = function () { bad(new Error(src)); }; i.src = src; }); };
+  var faces = [
+    ['Plex Cond', 'plex-cond-700.woff', '700'], ['Plex Cond', 'plex-cond-600.woff', '600'],
+    ['Plex Sans', 'plex-sans-400.woff', '400'], ['Victor Mono', 'victor-mono.woff', '100 900'], ['Tiny5', 'tiny5.woff', '400']
+  ];
+  for (var f of faces) { var ff = new FontFace(f[0], 'url(' + FONTS + f[1] + ')', { weight: f[2] }); await ff.load(); document.fonts.add(ff); }
+  var grain = await load(IMG + 'tex/grain.png'), stains = await load(IMG + 'tex/stains.png');
+  var save = function (c, name, type, q) {
+    return new Promise(function (ok) {
+      c.toBlob(function (b) { fetch('/__save/' + name, { method: 'POST', body: b }).then(function (r) { return r.text(); }).then(function (t) { log(t + ' (' + Math.round(b.size / 1024) + ' KB)'); ok(); }); }, type, q);
+    });
+  };
+  var mk = function (w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; document.body.appendChild(c); return [c, c.getContext('2d')]; };
+  var cover = function (ctx, img, w, h, ox, oy) {
+    var s = Math.max(w / img.width, h / img.height), iw = img.width * s, ih = img.height * s;
+    ctx.drawImage(img, (w - iw) * (ox == null ? .5 : ox), (h - ih) * (oy == null ? .5 : oy), iw, ih);
+  };
+  var texture = function (ctx, w, h) {
+    ctx.save(); ctx.globalAlpha = .55; ctx.fillStyle = ctx.createPattern(grain, 'repeat'); ctx.fillRect(0, 0, w, h); ctx.restore();
+    ctx.save(); ctx.globalAlpha = .5; ctx.drawImage(stains, 0, 0, 512, 512, w * .2, 0, w * .9, h * 1.2); ctx.restore();
+    var g = ctx.createRadialGradient(w / 2, h * .4, h * .35, w / 2, h / 2, w * .72); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.65)');
+    ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+  };
+  var W = 1200, H = 630;
+
+  // --- иконки ---
+  var mark = await load(IMG + 'shozit-mark.svg');
+  for (var spec of [['favicon-32.png', 32, 0], ['icon-192.png', 192, 0], ['icon-512.png', 512, 0], ['apple-touch-icon.png', 180, 1]]) {
+    var r = mk(spec[1], spec[1]), s = spec[1];
+    if (spec[2]) { r[1].fillStyle = '#0d0c0a'; r[1].fillRect(0, 0, s, s); }
+    var pad = spec[2] ? s * .14 : 0, box = s - pad * 2, k = Math.min(box / mark.width, box / mark.height);
+    r[1].drawImage(mark, (s - mark.width * k) / 2, (s - mark.height * k) / 2, mark.width * k, mark.height * k);
+    await save(r[0], spec[0], 'image/png');
+  }
+
+  // --- OG: главная ---
+  var logo = await load(IMG + 'shozit-logo.svg');
+  var a = mk(W, H), c = a[1];
+  c.fillStyle = '#0d0c0a'; c.fillRect(0, 0, W, H);
+  var glow = c.createRadialGradient(260, 0, 0, 260, 0, 760); glow.addColorStop(0, 'rgba(217,164,65,.16)'); glow.addColorStop(1, 'rgba(217,164,65,0)');
+  c.fillStyle = glow; c.fillRect(0, 0, W, H);
+  c.drawImage(logo, 90, 120, 840, 278);
+  c.fillStyle = '#e8dcc0'; c.font = '600 46px "Plex Cond"';
+  c.fillText('Делаем игры, в которых всё решает случай.', 94, 478);
+  c.fillStyle = '#d9a441'; c.font = '500 22px "Victor Mono"'; c.fillText('RIGGED  ·  DEEP ROLL  ·  WINDOWS  ·  LINUX', 94, 540);
+  texture(c, W, H);
+  await save(a[0], 'og-home.jpg', 'image/jpeg', .86);
+
+  // --- OG: Rigged ---
+  var slot = await load(IMG + 'rigged-slot.webp'), rl = await load(IMG + 'rigged-logo.svg');
+  var b = mk(W, H); c = b[1];
+  c.fillStyle = '#070b09'; c.fillRect(0, 0, W, H);
+  cover(c, slot, W, H, .5, .35);
+  var sc = c.createLinearGradient(0, 0, W, 0); sc.addColorStop(0, 'rgba(7,11,9,.96)'); sc.addColorStop(.55, 'rgba(7,11,9,.8)'); sc.addColorStop(1, 'rgba(7,11,9,.25)');
+  c.fillStyle = sc; c.fillRect(0, 0, W, H);
+  c.drawImage(rl, 70, 190, 620, 143);
+  c.fillStyle = '#d9ad67'; c.font = '500 26px "Victor Mono"'; c.fillText('ДЕМО  ·  ОДИН ТРИАЛ', 74, 390);
+  c.fillStyle = '#e8dcc0'; c.font = '600 34px "Plex Cond"'; c.fillText('Слоты, квоты, долги.', 74, 446);
+  c.fillStyle = '#9aa28c'; c.font = '500 20px "Victor Mono"'; c.fillText('WINDOWS  ·  LINUX  ·  SHOZIT DEVELOPMENTS', 74, 560);
+  texture(c, W, H);
+  await save(b[0], 'og-rigged.jpg', 'image/jpeg', .86);
+
+  // --- OG: Deep Roll ---
+  var map = await load(IMG + 'dr-map.webp'), dl = await load(IMG + 'dr-logo.webp');
+  var d = mk(W, H); c = d[1];
+  c.fillStyle = '#14121f'; cover(c, map, W, H, .5, .2);
+  var sd = c.createLinearGradient(0, 0, W, 0); sd.addColorStop(0, 'rgba(20,18,31,.95)'); sd.addColorStop(.5, 'rgba(20,18,31,.7)'); sd.addColorStop(1, 'rgba(20,18,31,.1)');
+  c.fillStyle = sd; c.fillRect(0, 0, W, H);
+  var lw = 500, lh = lw * dl.height / dl.width;
+  c.drawImage(dl, 70, 70, lw, lh);
+  c.fillStyle = '#58d2cb'; c.font = '400 28px "Tiny5"'; c.fillText('ИСТОРИЯ О ТОМ, ЧТО ОСТАЛОСЬ ВНИЗУ', 74, 70 + lh + 56);
+  c.fillStyle = '#e7a64c'; c.font = '400 30px "Tiny5"'; c.fillText('ДЕМО V0.1.0  ·  ЗАМОРОЖЕНА', 74, 70 + lh + 112);
+  c.fillStyle = '#aaa0b4'; c.font = '400 22px "Tiny5"'; c.fillText('WINDOWS  ·  LINUX  ·  SHOZIT DEVELOPMENTS', 74, H - 40);
+  texture(c, W, H);
+  await save(d[0], 'og-deep-roll.jpg', 'image/jpeg', .86);
+  log('DONE');
+})().catch(function (e) { document.getElementById('log').textContent += 'ERROR ' + e.message; });
+</script>
+</body>
+</html>

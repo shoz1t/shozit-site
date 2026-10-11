@@ -1,0 +1,16 @@
+{
+  "name": "shozit-launcher",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Лаунчер Shozit Developments: установка, запуск и обновление игр",
+  "scripts": {
+    "dev": "tauri dev",
+    "build": "tauri build",
+    "build:exe": "tauri build --no-bundle",
+    "preview": "node ../tools/serve.mjs ui 5177",
+    "icons": "tauri icon src-tauri/app-icon.png"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2"
+  }
+}

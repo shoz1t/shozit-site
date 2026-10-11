@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Shozit Launcher",
+  "version": "0.1.0",
+  "identifier": "ru.shozit.launcher",
+  "build": {
+    "frontendDist": "../ui"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Shozit Launcher",
+        "width": 1040,
+        "height": 660,
+        "minWidth": 880,
+        "minHeight": 580,
+        "center": true,
+        "decorations": false,
+        "resizable": true,
+        "shadow": true,
+        "transparent": false,
+        "visible": false
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; font-src 'self'; script-src 'self'; connect-src 'self' ipc: http://ipc.localhost; media-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["nsis", "appimage", "deb"],
+    "publisher": "Shozit Developments",
+    "copyright": "© 2026 Shozit Developments",
+    "category": "Game",
+    "shortDescription": "Лаунчер игр Shozit Developments",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "nsis": {
+        "installMode": "currentUser",
+        "languages": ["Russian", "English"]
+      }
+    }
+  }
+}

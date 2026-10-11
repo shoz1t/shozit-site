@@ -1,0 +1,4 @@
+{
+  "_readme": "Адрес сайта для OG-тегов, canonical, sitemap и robots. Пока сайт на github.io, впиши сюда его адрес. Когда подключишь домен, замени на https://shozit.ru и запусти: node tools/sync-site.mjs",
+  "siteUrl": "https://shozit.ru"
+}

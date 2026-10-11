@@ -1,0 +1,50 @@
+{
+  "_readme": "Новости сайта и лаунчера. Новые записи добавляй в начало списка. game: studio, rigged, deep-roll или launcher. date в формате ГГГГ-ММ-ДД. url необязателен (ссылка на полный пост). Записи взяты из телеграм-канала t.me/shozitdev.",
+  "schema": 1,
+  "items": [
+    {
+      "id": "rigged-demo-soon",
+      "date": "2026-10-06",
+      "game": "rigged",
+      "title": { "ru": "RIGGED: играбельное демо скоро", "en": "RIGGED: a playable demo is coming soon" },
+      "text": {
+        "ru": "Trial почти готов. Скоро можно будет не просто смотреть на разработку, а скачать демку и пройти её самим. Windows и Linux. Пока что первый тизер.",
+        "en": "The Trial is almost ready. Soon you will be able to download the demo and play through it yourself instead of just watching development. Windows and Linux. For now, the first teaser."
+      },
+      "url": "https://t.me/shozitdev/10"
+    },
+    {
+      "id": "rigged-announce",
+      "date": "2026-09-27",
+      "game": "rigged",
+      "title": { "ru": "Новый проект: RIGGED", "en": "A new project: RIGGED" },
+      "text": {
+        "ru": "Мрачная инди-игра про случайность, риск и систему, которая устроена не совсем так, как кажется. Сначала у игрока только автомат, небольшая платформа, темнота вокруг, радио и одна простая задача: крутить, забирать выигрыш, набирать нужную сумму и не обанкротиться. Trial это только начало.",
+        "en": "A grim indie game about chance, risk and a system that is not quite what it seems. At first the player has only a machine, a small platform, darkness all around, a radio and one simple task: spin, collect the winnings, reach the target sum and don't go bankrupt. The Trial is only the beginning."
+      },
+      "url": "https://t.me/shozitdev/9"
+    },
+    {
+      "id": "deep-roll-frozen",
+      "date": "2026-09-27",
+      "game": "deep-roll",
+      "title": { "ru": "Deep Roll заморожена", "en": "Deep Roll is frozen" },
+      "text": {
+        "ru": "Разработка Deep Roll заморожена на неопределённый срок. Концепция перестала казаться перспективной, мобильный порт не получился, а на публикацию в Steam сейчас нет средств. Проект не удалён и не закрыт окончательно, возможно, к нему ещё вернутся. Канал стал общим девлогом студии.",
+        "en": "Deep Roll development is frozen indefinitely. The concept stopped looking promising, the mobile port did not work out, and there is no budget for a Steam release right now. The project is not deleted or closed for good, and it may be revisited someday. The channel is now the studio's general devlog."
+      },
+      "url": "https://t.me/shozitdev/6"
+    },
+    {
+      "id": "deep-roll-demo",
+      "date": "2026-08-14",
+      "game": "deep-roll",
+      "title": { "ru": "Deep Roll: первая демонстрационная версия", "en": "Deep Roll: the first demo" },
+      "text": {
+        "ru": "Первая доступная сборка игры про шахты, добычу ресурсов, случайность (RNG) и прокачку. Версии для Windows и Linux. Многое ещё будет дорабатываться, но демо показывает основную идею и систему прогрессии.",
+        "en": "The first playable build of a game about mining, resources, randomness (RNG) and progression. Versions for Windows and Linux. Much is still to be refined, but the demo shows the core idea and the progression system."
+      },
+      "url": "https://t.me/shozitdev/4"
+    }
+  ]
+}

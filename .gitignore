@@ -1,0 +1,30 @@
+# Сырые материалы и исходники игр: огромные, в репозиторий не попадают.
+/assets/
+
+# Тестовые сборки и архивы релизов (релизы выкладываются через GitHub Releases)
+test-builds/
+builds/
+*.zip
+*.7z
+*.exe
+*.msi
+*.pck
+*.x86_64
+*.AppImage
+*.deb
+*.apk
+*.aab
+
+# Инструменты разработки
+node_modules/
+launcher/node_modules/
+launcher/src-tauri/target/
+launcher/dist/
+.claude/
+*.log
+.DS_Store
+Thumbs.db
+
+# Генерируется Tauri
+launcher/src-tauri/gen/
+/design/frames/

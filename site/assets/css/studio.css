@@ -1,0 +1,66 @@
+/* Главная студии */
+.home-hero { padding-block: clamp(28px, 6vw, 72px) clamp(24px, 4vw, 48px); }
+.home-hero .wrap { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(24px, 5vw, 64px); align-items: end; }
+.home-lead { margin: 0; font: 700 clamp(40px, 6.4vw, 84px)/1.02 var(--f-head); letter-spacing: .01em; text-transform: uppercase; max-width: 15ch; text-wrap: balance; }
+.home-dev { margin-top: 14px; color: var(--muted); }
+.hero-index { display: grid; gap: 0; align-content: end; }
+.hero-index a { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 12px; padding: 16px 0; border-top: 1px solid var(--line); text-decoration: none; color: var(--ink); font: 700 clamp(24px, 3vw, 32px)/1 var(--f-head); text-transform: uppercase; letter-spacing: .04em; transition: transform .15s ease-out; }
+.hero-index a:last-child { border-bottom: 1px solid var(--line); }
+.hero-index a:hover { transform: translateX(6px); color: var(--accent); }
+.hero-index .label { text-align: right; }
+
+.band { position: relative; padding-block: clamp(20px, 4vw, 44px); }
+.band .wrap { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); align-items: center; }
+.band-shot { grid-column: 1 / span 8; grid-row: 1; }
+.band-text { grid-column: 7 / span 6; grid-row: 1; z-index: 3; }
+.band--flip .band-shot { grid-column: 5 / span 8; }
+.band--flip .band-text { grid-column: 1 / span 6; }
+.band-text h2 { margin: 8px 0 14px; font-size: clamp(36px, 5.5vw, 64px); }
+.band-text p + p { margin-top: 10px; }
+.band-text .meta { margin: 16px 0 22px; }
+.band-text .note { color: var(--accent); font-weight: 500; margin-top: 14px; }
+.band .btn-row { margin-top: 4px; }
+.band--rigged .shot::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(0, 0, 0, .22) 0 1px, transparent 1px 3px); }
+.band--deep .shot img { filter: none; }
+
+.launcher-sec { padding-block: clamp(28px, 5vw, 56px); }
+.launcher-sec .plate { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 24px 48px; align-items: center; }
+.launcher-sec p { margin-top: 12px; color: var(--muted); }
+.launcher-state { font: 500 13px/1.6 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent); border: 1px dashed var(--accent); padding: 14px 16px; }
+
+.news-sec { padding-block: clamp(28px, 5vw, 56px) clamp(36px, 6vw, 72px); }
+.news-sec .head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 18px; }
+
+@media (max-width: 860px) {
+  .home-hero .wrap, .launcher-sec .plate { grid-template-columns: 1fr; }
+  .band .wrap { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+  .band-text { margin: -28px 12px 0; }
+  .band--flip .band-text { margin: -28px 12px 0; }
+}
+
+/* ---------- видео внизу первого экрана и лента ---------- */
+.home-hero { position: relative; overflow: hidden; display: flex; align-items: center; min-height: clamp(540px, 50vw, 780px); padding-block: clamp(28px, 5vw, 64px); }
+.home-hero .wrap { position: relative; z-index: 20; }
+/* Контейнер смешивается с фоном через screen: чёрное в видео исчезает. Края гасит маска на самом видео. */
+.hero-video { position: absolute; inset: 0; z-index: 1; pointer-events: none; mix-blend-mode: screen; }
+.hero-video video { position: absolute; top: 0; left: 0; display: block; width: 140%; max-width: none; height: 100%; object-fit: cover; transform: translate3d(var(--vx, 0px), var(--vy, 0px), 0) scale(1.03); will-change: transform; -webkit-mask-image: radial-gradient(ellipse 58% 68% at 50% 50%, #000 36%, transparent 100%); mask-image: radial-gradient(ellipse 58% 68% at 50% 50%, #000 36%, transparent 100%); }
+.fx-off .hero-video { display: none; }
+
+.ribbon { position: relative; z-index: 2; border-block: 1px solid var(--line); background: rgba(0, 0, 0, .22); overflow: hidden; }
+.ribbon-in { display: flex; align-items: center; padding-block: 16px; }
+.ribbon-label { flex: none; margin: 0; padding-right: 24px; margin-right: 24px; border-right: 1px solid var(--line); }
+.slider { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent); }
+.slider-track { display: flex; align-items: center; width: max-content; animation: ribbon 36s linear infinite; }
+.slider-track img { flex: none; width: auto; margin-right: 96px; opacity: .85; }
+.slider-track img:nth-child(odd) { height: 34px; }
+.slider-track img:nth-child(even) { height: 58px; }
+.slider:hover .slider-track { animation-play-state: paused; }
+@keyframes ribbon { to { transform: translateX(-50%); } }
+@media (max-width: 860px) {
+  .hero-video video { width: 190%; left: -45%; opacity: .6; }
+  .ribbon-in { flex-direction: column; align-items: stretch; gap: 12px; }
+  .ribbon-label { padding: 0 0 10px; margin: 0; border-right: 0; border-bottom: 1px solid var(--line); }
+}
+/* затемнение под текстом первого экрана и подложка списка игр */
+.home-hero::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, rgba(13, 12, 10, .82) 0, rgba(13, 12, 10, .5) 42%, rgba(13, 12, 10, 0) 78%); }
+.hero-index { background: rgba(13, 12, 10, .62); padding-inline: 18px; }

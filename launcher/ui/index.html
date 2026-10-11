@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shozit Launcher</title>
+<link rel="stylesheet" href="css/app.css">
+<script type="module" src="js/app.js"></script>
+</head>
+<body class="g-rigged">
+
+<!-- Заставка студии: короткая анимация логотипа при запуске (клик пропускает) -->
+<div id="splash" aria-hidden="true"><img src="img/shozit-logo-anim.svg" width="665" height="220" alt=""></div>
+
+<div class="win" id="win">
+  <header class="titlebar" data-tauri-drag-region>
+    <div class="tb-brand" data-tauri-drag-region>
+      <img src="img/shozit-mark.svg" width="22" height="23" alt="" data-tauri-drag-region>
+      <span data-tauri-drag-region>SHOZIT LAUNCHER</span>
+    </div>
+    <div class="tb-right">
+      <button type="button" class="tb-set" id="btnSettings" aria-haspopup="dialog" aria-expanded="false">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 5.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6zM6.7 1h2.6l.4 1.9 1.3.6 1.6-1.1 1.8 1.8-1.1 1.6.6 1.3L15 7.7v.6l-1.9.4-.6 1.3 1.1 1.6-1.8 1.8-1.6-1.1-1.3.6L9.3 15H6.7l-.4-1.9-1.3-.6-1.6 1.1-1.8-1.8 1.1-1.6-.6-1.3L1 8.3v-.6l1.9-.4.6-1.3-1.1-1.6 1.8-1.8L5 3.7l1.3-.6z"/></svg>
+        <span data-i18n="set.open"></span>
+      </button>
+      <div class="wc">
+        <button type="button" class="wc-btn" id="btnMin" data-i18n-attr="aria-label:win.min"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 8.5h8" /></svg></button>
+        <button type="button" class="wc-btn" id="btnMax" data-i18n-attr="aria-label:win.max"><svg viewBox="0 0 12 12" aria-hidden="true"><path id="icoMax" d="M2.5 2.5h7v7h-7z" /></svg></button>
+        <button type="button" class="wc-btn wc-close" id="btnClose" data-i18n-attr="aria-label:win.close"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="body">
+    <aside class="rail">
+      <p class="label" data-i18n="rail.games"></p>
+      <div class="games" id="games" role="tablist"></div>
+      <p class="label rail-news-h" data-i18n="rail.news"></p>
+      <ul class="news" id="news"></ul>
+    </aside>
+
+    <section class="stage" id="stage" aria-live="polite">
+      <div class="hero" id="hero">
+        <img class="hero-img" id="heroImg" src="img/rigged-slot.webp" alt="">
+        <div class="hero-shade"></div>
+        <div class="hero-text">
+          <img class="hero-logo" id="heroLogo" src="img/rigged-logo.svg" alt="">
+          <p class="hero-tag" id="heroTag"></p>
+        </div>
+      </div>
+
+      <div class="panel" id="panel">
+        <video class="panel-fx" muted loop playsinline autoplay preload="auto" aria-hidden="true"><source src="img/hero-loop.webm" type="video/webm"></video>
+        <div class="banner" id="banner" hidden></div>
+        <p class="desc" id="desc"></p>
+
+        <div class="actions">
+          <button type="button" class="btn" id="btnMain"></button>
+          <button type="button" class="btn btn--ghost" id="btnSecond" hidden></button>
+        </div>
+
+        <div class="progress" id="progress" hidden>
+          <div class="p-head"><span id="pPhase"></span><span id="pNums"></span></div>
+          <div class="bar"><i id="pBar"></i></div>
+        </div>
+
+        <dl class="facts" id="facts"></dl>
+
+        <div class="folder">
+          <div class="f-path"><span class="label" data-i18n="folder.label"></span><code id="folderPath"></code></div>
+          <div class="f-btns">
+            <button type="button" class="link-btn" id="btnOpen" data-i18n="folder.open"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="statusbar">
+    <span class="dot" id="netDot"></span><span id="netText"></span>
+    <span class="sb-sp"></span>
+    <span id="appVer"></span>
+  </footer>
+</div>
+
+<!-- Панель настроек: выезжает справа, закрывается кнопкой, Esc и кликом вне панели -->
+<div id="scrim" class="scrim"></div>
+<aside id="settings" class="drawer" role="dialog" aria-modal="true" aria-labelledby="stTitle" tabindex="-1" aria-hidden="true">
+  <header class="dr-head">
+    <h2 id="stTitle" data-i18n="set.title"></h2>
+    <button type="button" class="wc-btn dr-close" id="stClose" data-i18n-attr="aria-label:set.close"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 2.5l7 7M9.5 2.5l-7 7" /></svg></button>
+  </header>
+  <div class="dr-body">
+
+    <section class="set">
+      <h3 data-i18n="set.install"></h3>
+      <label class="switch"><input type="checkbox" id="stPerGame"><span class="sw"></span><span data-i18n="set.pergame"></span></label>
+      <p class="hint" data-i18n="set.pergame.hint"></p>
+      <div id="stDirs" class="dirs"></div>
+      <div id="stMove" class="ask" hidden>
+        <p id="stMoveText"></p>
+        <div class="ask-btns">
+          <button type="button" class="mini" id="stMoveDo" data-i18n="set.move.do"></button>
+          <button type="button" class="mini mini--ghost" id="stMoveKeep" data-i18n="set.move.keep"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.updates"></h3>
+      <label class="switch"><input type="checkbox" id="stAutoGames"><span class="sw"></span><span data-i18n="set.auto.games"></span></label>
+      <label class="switch"><input type="checkbox" id="stAutoLauncher"><span class="sw"></span><span data-i18n="set.auto.launcher"></span></label>
+      <div class="row"><button type="button" class="mini" id="stCheck" data-i18n="set.check"></button><span class="note" id="stCheckNote"></span></div>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.after"></h3>
+      <div class="seg" id="stAfter" role="group">
+        <button type="button" data-v="keep" data-i18n="set.after.keep"></button>
+        <button type="button" data-v="minimize" data-i18n="set.after.min"></button>
+        <button type="button" data-v="close" data-i18n="set.after.close"></button>
+      </div>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.lang"></h3>
+      <div class="seg" id="stLang" role="group">
+        <button type="button" data-v="ru">Русский</button>
+        <button type="button" data-v="en">English</button>
+      </div>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.files"></h3>
+      <div id="stGames" class="gfiles"></div>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.perf"></h3>
+      <label class="switch"><input type="checkbox" id="stNoAnim"><span class="sw"></span><span data-i18n="set.noanim"></span></label>
+    </section>
+
+    <section class="set">
+      <h3 data-i18n="set.about"></h3>
+      <p class="about" id="stVersion"></p>
+      <div class="row"><button type="button" class="mini" id="stLog" data-i18n="set.log"></button></div>
+      <p class="hint"><span data-i18n="set.log.path"></span> <code id="stLogPath"></code></p>
+    </section>
+  </div>
+</aside>
+</body>
+</html>
