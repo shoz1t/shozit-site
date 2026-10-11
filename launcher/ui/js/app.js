@@ -129,7 +129,6 @@ function renderStage(animate) {
   const g = GAMES[sel], i = info(sel);
   document.body.classList.toggle('g-rigged', g.body === 'g-rigged');
   document.body.classList.toggle('g-deep', g.body === 'g-deep');
-  if (animate) { const st = $('#stage'); st.classList.remove('swap'); void st.offsetWidth; st.classList.add('swap'); }
   $('#heroImg').src = g.hero;
   $('#heroLogo').src = g.logo;
   $('#heroLogo').alt = g.name;
@@ -221,14 +220,29 @@ function renderStatus() {
 function renderAll() { renderRail(); renderStage(); renderStatus(); if (isOpen()) renderSettings(); }
 
 /* ---------- действия ---------- */
+let swapTimer = 0;
 function select(id) {
   if (id === sel) return;
+  const order = Object.keys(GAMES);
+  const dir = order.indexOf(id) > order.indexOf(sel) ? 1 : -1;
   sel = id;
   confirmUninstall = null;
   renderRail();
-  renderStage(true);
-}
-async function refreshState() { S = await invoke('app_state'); applyAnim(); }
+  clearTimeout(swapTimer);
+  const st = $('#stage');
+  if (document.body.classList.contains('no-anim')) { st.classList.remove('leave', 'enter'); renderStage(); return; }
+  st.style.setProperty('--dir', dir);
+  st.style.setProperty('--origin', dir > 0 ? 'left' : 'right');
+  st.classList.remove('enter');
+  st.classList.add('leave');
+  // Содержимое подменяется, когда старая сцена уже ушла.
+  swapTimer = setTimeout(() => {
+    renderStage();
+    st.classList.remove('leave');
+    void st.offsetWidth;
+    st.classList.add('enter');
+  }, 140);
+}async function refreshState() { S = await invoke('app_state'); applyAnim(); }
 async function refreshRemote() {
   try { remote = await invoke('refresh_remote'); } catch { remote = { online: false, manifest: null, news: null }; }
 }
