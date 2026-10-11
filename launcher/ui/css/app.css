@@ -156,7 +156,8 @@ body.linux:not(.maximized) .rz { display: block; }
 .rz-sw { bottom: 0; left: 0; width: 10px; height: 10px; cursor: sw-resize; } .rz-se { bottom: 0; right: 0; width: 10px; height: 10px; cursor: se-resize; }
 
 @media (max-width: 960px) { .facts { grid-template-columns: repeat(2, minmax(0, auto)); } .body { grid-template-columns: 240px 1fr; } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .win { opacity: 1; transform: none; } 
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .win { opacity: 1; transform: none; } }
+
 /* ---------- кнопка настроек в заголовке ---------- */
 .tb-set { display: inline-flex; align-items: center; gap: 8px; height: 26px; padding: 0 10px; background: none; border: 1px solid var(--line); color: var(--muted); font: 500 11px/1 var(--f-mono); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: transform .1s ease-out; }
 .tb-set svg { width: 14px; height: 14px; fill: currentColor; }
@@ -224,7 +225,7 @@ body.linux:not(.maximized) .rz { display: block; }
 
 /* отключение анимаций для слабых компьютеров */
 body.no-anim *, body.no-anim *::before, body.no-anim *::after { animation: none !important; transition: none !important; }
-body.no-anim body.no-anim .win { opacity: 1; transform: none; }
+body.no-anim .win { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .drawer, .scrim { transition: none !important; } }
 /* ---------- полоса прокрутки: тонкая, квадратная, без стрелок ---------- */
 ::-webkit-scrollbar { width: 10px; height: 10px; }

@@ -242,7 +242,8 @@ function select(id) {
     void st.offsetWidth;
     st.classList.add('enter');
   }, 140);
-}async function refreshState() { S = await invoke('app_state'); applyAnim(); }
+}
+async function refreshState() { S = await invoke('app_state'); applyAnim(); }
 async function refreshRemote() {
   try { remote = await invoke('refresh_remote'); } catch { remote = { online: false, manifest: null, news: null }; }
 }
