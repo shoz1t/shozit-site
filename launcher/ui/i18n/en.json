@@ -99,7 +99,7 @@
   "set.uninstall.confirm": "Really?",
   "set.notinstalled": "Not installed",
   "set.perf": "Performance",
-  "set.noanim": "Disable animations and the background video (for low-end computers)",
+  "set.noanim": "Disable animations (for low-end computers)",
   "set.about": "About the launcher",
   "set.version": "Version {v}",
   "set.log": "Error log",

@@ -283,8 +283,6 @@ async function autoUpdateGames() {
 function applyAnim() {
   const off = S.reduce_animations ?? window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   document.body.classList.toggle('no-anim', !!off);
-  const v = $('.panel-fx');
-  if (v) { if (off) v.pause(); else v.play?.().catch?.(() => {}); }
 }
 
 /* ---------- панель настроек ---------- */
