@@ -72,6 +72,11 @@
       var s = a.querySelector('small');
       if (s) s.textContent = d.size ? fmtSize(d.size) : '';
     });
+    qsa('[data-pkg]').forEach(function (a) {
+      var pkg = versions.launcher && versions.launcher.packages && versions.launcher.packages[a.getAttribute('data-pkg')];
+      var s = a.querySelector('small');
+      if (s && pkg && pkg.size) s.textContent = fmtSize(pkg.size);
+    });
     qsa('[data-version]').forEach(function (el) {
       var g = versions.games[el.getAttribute('data-version')];
       if (g) el.textContent = g.version;
@@ -81,6 +86,19 @@
       var has = !!(g && g.teaser);
       qsa('[data-teaser-yes]', el).forEach(function (n) { n.hidden = !has; if (has) n.href = g.teaser; });
       qsa('[data-teaser-no]', el).forEach(function (n) { n.hidden = has; });
+    });
+  }
+
+  /* ---------- выбор лаунчера: вкладки Windows / Linux ---------- */
+  function initPicker() {
+    qsa('[data-picker]').forEach(function (box) {
+      var tabs = qsa('.dl-tab', box), panels = qsa('[data-os-panel]', box);
+      function show(os) {
+        tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-os') === os)); });
+        panels.forEach(function (p) { p.hidden = p.getAttribute('data-os-panel') !== os; });
+      }
+      tabs.forEach(function (b) { b.addEventListener('click', function () { show(b.getAttribute('data-os')); }); });
+      show(/linux|x11/i.test(navigator.userAgent) && !/android/i.test(navigator.userAgent) ? 'linux' : 'windows');
     });
   }
 
@@ -148,6 +166,6 @@
     load(),
     getJSON('version.json').then(function (d) { versions = d; }).catch(function () {}),
     qsa('[data-news]').length ? getJSON('news.json').then(function (d) { news = d; }).catch(function () { news = false; }) : Promise.resolve()
-  ]).then(function () { applyLang(); done(); });
+  ]).then(function () { initPicker(); applyLang(); done(); });
   setTimeout(done, 1500);
 })();

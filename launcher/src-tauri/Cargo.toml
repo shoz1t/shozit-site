@@ -1,6 +1,6 @@
 [package]
 name = "shozit-launcher"
-version = "0.1.0"
+version = "0.1.1"
 description = "Лаунчер Shozit Developments"
 authors = ["Shozit Developments"]
 edition = "2021"

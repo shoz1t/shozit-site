@@ -109,9 +109,22 @@
           <p class="label" data-i18n="home.launcher.tag">Лаунчер Shozit</p>
           <h2 data-i18n="home.launcher.title">Лаунчер</h2>
           <p data-i18n="home.launcher.desc">Одно приложение для обеих игр: установка, запуск, проверка обновлений и новости студии. Работает в Windows и Linux.</p>
-          <div class="btn-row">
-            <a class="btn" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-windows-setup.exe" data-keep data-dl="launcher:windows"><span data-i18n="dl.windows">Windows</span><small></small></a>
-            <a class="btn" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-linux.AppImage" data-keep data-dl="launcher:linux"><span data-i18n="dl.linux">Linux</span><small></small></a>
+          <div class="dl-picker" data-picker>
+            <div class="dl-tabs" role="tablist" aria-label="Система" data-i18n-attr="aria-label:dlp.os">
+              <button type="button" role="tab" class="dl-tab" data-os="windows" aria-selected="true" data-i18n="dl.windows">Windows</button>
+              <button type="button" role="tab" class="dl-tab" data-os="linux" aria-selected="false" data-i18n="dl.linux">Linux</button>
+            </div>
+            <ul class="dl-opts" data-os-panel="windows">
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-windows-setup.exe" data-pkg="setup"><span class="dl-opt-t"><b data-i18n="dlp.win.setup">Установщик (.exe)</b><em data-i18n="dlp.win.setup.d">Рекомендуется: ставит лаунчер и ярлык</em></span><small></small></a></li>
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-windows-portable.zip" data-pkg="portable"><span class="dl-opt-t"><b data-i18n="dlp.win.zip">Портативная версия (.zip)</b><em data-i18n="dlp.win.zip.d">Без установки: распаковать и запустить</em></span><small></small></a></li>
+            </ul>
+            <ul class="dl-opts" data-os-panel="linux" hidden>
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-linux.AppImage" data-pkg="appimage"><span class="dl-opt-t"><b data-i18n="dlp.lin.appimage">AppImage</b><em data-i18n="dlp.lin.appimage.d">Любой дистрибутив: chmod +x и запуск</em></span><small></small></a></li>
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-linux.deb" data-pkg="deb"><span class="dl-opt-t"><b data-i18n="dlp.lin.deb">Пакет .deb</b><em data-i18n="dlp.lin.deb.d">Debian, Ubuntu, Linux Mint, Pop!_OS</em></span><small></small></a></li>
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-linux.rpm" data-pkg="rpm"><span class="dl-opt-t"><b data-i18n="dlp.lin.rpm">Пакет .rpm</b><em data-i18n="dlp.lin.rpm.d">Fedora, openSUSE, Nobara</em></span><small></small></a></li>
+              <li><a class="dl-opt" href="https://github.com/shoz1t/shozit-site/releases/latest/download/ShozitLauncher-linux-x86_64.tar.gz" data-pkg="tar"><span class="dl-opt-t"><b data-i18n="dlp.lin.tar">Бинарник (.tar.gz)</b><em data-i18n="dlp.lin.tar.d">Универсальный, для Arch и остальных. Нужен webkit2gtk 4.1</em></span><small></small></a></li>
+            </ul>
+            <p class="note dl-hint" data-i18n="dlp.hint">Всегда скачивается последняя версия лаунчера.</p>
           </div>
           <p class="note" data-i18n="home.launcher.note">Игры устанавливаются только через лаунчер: он сам скачает нужную версию, проверит файлы и будет обновлять игру.</p>
         </div>

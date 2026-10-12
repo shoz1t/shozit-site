@@ -71,6 +71,12 @@ jobs:
           mkdir -p ../dist-release
           cp src-tauri/target/release/bundle/appimage/*.AppImage "../dist-release/ShozitLauncher-v${v}-linux.AppImage"
           cp src-tauri/target/release/bundle/deb/*.deb "../dist-release/ShozitLauncher-v${v}-linux.deb"
+          cp src-tauri/target/release/bundle/rpm/*.rpm "../dist-release/ShozitLauncher-v${v}-linux.rpm"
+          # Универсальный бинарник: для дистрибутивов без deb/rpm (Arch и другие). Нужен пакет webkit2gtk 4.1.
+          mkdir -p ../pack/ShozitLauncher
+          cp src-tauri/target/release/shozit-launcher ../pack/ShozitLauncher/
+          { echo "Shozit Launcher $v"; echo "Запуск: ./shozit-launcher"; echo "Нужны пакеты: webkit2gtk 4.1, gtk3, libayatana-appindicator."; } > ../pack/ShozitLauncher/README.txt
+          tar -czf "../dist-release/ShozitLauncher-v${v}-linux-x86_64.tar.gz" -C ../pack ShozitLauncher
 
       - name: Контрольные суммы SHA-256
         shell: bash
@@ -97,7 +103,11 @@ jobs:
       - name: Постоянные имена файлов (ссылка «последняя версия» на сайте не меняется между релизами)
         run: |
           cp dist/ShozitLauncher-v*-windows-setup.exe dist/ShozitLauncher-windows-setup.exe
+          cp dist/ShozitLauncher-v*-windows-portable.zip dist/ShozitLauncher-windows-portable.zip
           cp dist/ShozitLauncher-v*-linux.AppImage dist/ShozitLauncher-linux.AppImage
+          cp dist/ShozitLauncher-v*-linux.deb dist/ShozitLauncher-linux.deb
+          cp dist/ShozitLauncher-v*-linux.rpm dist/ShozitLauncher-linux.rpm
+          cp dist/ShozitLauncher-v*-linux-x86_64.tar.gz dist/ShozitLauncher-linux-x86_64.tar.gz
       - uses: softprops/action-gh-release@v2
         with:
           name: Лаунчер ${{ github.ref_name }}
