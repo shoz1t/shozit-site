@@ -89,17 +89,24 @@
     });
   }
 
-  /* ---------- выбор лаунчера: вкладки Windows / Linux ---------- */
+  /* ---------- выбор лаунчера для Linux: модальное окно ---------- */
   function initPicker() {
-    qsa('[data-picker]').forEach(function (box) {
-      var tabs = qsa('.dl-tab', box), panels = qsa('[data-os-panel]', box);
-      function show(os) {
-        tabs.forEach(function (b) { b.setAttribute('aria-selected', String(b.getAttribute('data-os') === os)); });
-        panels.forEach(function (p) { p.hidden = p.getAttribute('data-os-panel') !== os; });
-      }
-      tabs.forEach(function (b) { b.addEventListener('click', function () { show(b.getAttribute('data-os')); }); });
-      show(/linux|x11/i.test(navigator.userAgent) && !/android/i.test(navigator.userAgent) ? 'linux' : 'windows');
-    });
+    var dlg = document.getElementById('linuxModal');
+    if (!dlg || !dlg.showModal) return;
+    var opener = null;
+    function close() {
+      if (!dlg.open || dlg.classList.contains('closing')) return;
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduce) { dlg.close(); return; }
+      dlg.classList.add('closing');
+      setTimeout(function () { dlg.classList.remove('closing'); dlg.close(); }, 180);
+    }
+    qsa('[data-open-linux]').forEach(function (b) { b.addEventListener('click', function () { opener = b; dlg.showModal(); }); });
+    qsa('[data-close-linux]', dlg).forEach(function (b) { b.addEventListener('click', close); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) close(); });
+    dlg.addEventListener('cancel', function (e) { e.preventDefault(); close(); });
+    dlg.addEventListener('close', function () { if (opener) opener.focus(); });
+    qsa('.dl-card', dlg).forEach(function (a) { a.addEventListener('click', function () { setTimeout(close, 150); }); });
   }
 
   /* ---------- новости ---------- */

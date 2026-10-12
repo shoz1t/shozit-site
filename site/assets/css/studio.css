@@ -66,17 +66,33 @@
 /* затемнение под текстом первого экрана и подложка списка игр */
 .home-hero::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none; background: linear-gradient(to right, rgba(13, 12, 10, .82) 0, rgba(13, 12, 10, .5) 42%, rgba(13, 12, 10, 0) 78%); }
 .hero-index { background: rgba(13, 12, 10, .62); padding-inline: 18px; }
-.dl-picker { margin-top: 20px; }
-.dl-tabs { display: flex; border: 1px solid var(--line); width: max-content; max-width: 100%; }
-.dl-tab { background: none; border: 0; color: var(--muted); padding: 10px 22px; font: 700 14px/1 var(--f-head); letter-spacing: .1em; text-transform: uppercase; cursor: pointer; transition: transform .12s ease-out; }
-.dl-tab[aria-selected="true"] { background: var(--accent); color: var(--accent-ink, #0d0c0a); }
-.dl-tab:active { transform: translateY(1px); }
-.dl-opts { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 8px; }
-.dl-opts[hidden] { display: none; }
-.dl-opt { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 12px 14px; border: 1px solid var(--line); background: rgba(0,0,0,.25); color: var(--ink); text-decoration: none; transition: transform .12s ease-out; }
-.dl-opt:hover { border-color: var(--accent); transform: translateX(3px); }
-.dl-opt-t { display: grid; gap: 3px; min-width: 0; }
-.dl-opt-t b { font: 700 15px/1.2 var(--f-head); letter-spacing: .06em; text-transform: uppercase; }
-.dl-opt-t em { font: 500 12px/1.4 var(--f-mono); font-style: normal; color: var(--muted); }
-.dl-opt small { font: 500 11px/1 var(--f-mono); letter-spacing: .08em; color: var(--accent); white-space: nowrap; }
-.dl-hint { margin-top: 12px; }
+.dl-main { margin-top: 20px; }
+.dl-main .btn { cursor: pointer; font: inherit; }
+.dl-sub { margin-top: 10px; font: 500 12px/1.4 var(--f-mono); letter-spacing: .06em; }
+.dl-sub a { color: var(--muted); }
+.dl-modal { border: 1px solid var(--accent); background: var(--plate, #14130f); color: var(--ink); padding: 0; width: min(680px, calc(100vw - 32px)); max-height: calc(100vh - 32px); overflow: auto; }
+.dl-modal::backdrop { background: rgba(0,0,0,.72); }
+.dl-modal[open] { animation: dl-pop .26s cubic-bezier(.2,.8,.2,1) both; }
+.dl-modal[open]::backdrop { animation: dl-fade .26s ease-out both; }
+.dl-modal.closing { animation: dl-out .18s ease-in both; }
+.dl-modal.closing::backdrop { animation: dl-fade-out .18s ease-in both; }
+@keyframes dl-pop { from { opacity: 0; transform: translateY(18px) scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes dl-out { to { opacity: 0; transform: translateY(10px) scale(.97); } }
+@keyframes dl-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes dl-fade-out { to { opacity: 0; } }
+.dl-modal-in { position: relative; padding: 26px 26px 24px; }
+.dl-modal h3 { margin: 0; font: 700 22px/1.2 var(--f-head); letter-spacing: .06em; text-transform: uppercase; }
+.dl-modal-sub { margin: 8px 0 18px; color: var(--muted); font-size: 14px; }
+.dl-x { position: absolute; top: 10px; right: 12px; width: 34px; height: 34px; background: none; border: 1px solid var(--line); color: var(--muted); font-size: 22px; line-height: 1; cursor: pointer; }
+.dl-x:hover { color: var(--ink); border-color: var(--accent); }
+.dl-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.dl-card { display: grid; gap: 10px; justify-items: center; text-align: center; padding: 18px 12px 14px; border: 1px solid var(--line); background: rgba(0,0,0,.28); color: var(--ink); text-decoration: none; transition: transform .14s ease-out, border-color .14s; }
+.dl-card:hover, .dl-card:focus-visible { transform: translateY(-3px); border-color: var(--accent); outline: none; }
+.dl-card b { font: 600 13px/1.35 var(--f-text); color: var(--muted); }
+.dl-logos { display: flex; gap: 14px; align-items: center; justify-content: center; min-height: 44px; }
+.dl-logo { display: block; width: 40px; height: 40px; background: var(--ink); -webkit-mask: var(--logo) center / contain no-repeat; mask: var(--logo) center / contain no-repeat; }
+.dl-card:hover .dl-logo { background: var(--accent); }
+.dl-ext { font: 700 16px/1 var(--f-mono); letter-spacing: .08em; color: var(--accent); display: grid; gap: 4px; }
+.dl-ext small { font: 500 11px/1 var(--f-mono); color: var(--muted); letter-spacing: .08em; }
+@media (max-width: 520px) { .dl-cards { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .dl-modal[open], .dl-modal[open]::backdrop, .dl-modal.closing, .dl-modal.closing::backdrop { animation: none; } }
