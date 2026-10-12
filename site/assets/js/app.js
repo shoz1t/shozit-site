@@ -68,7 +68,7 @@
       var game = p[0] === 'launcher' ? versions.launcher : versions.games[p[0]];
       var d = game && game.downloads && game.downloads[p[1]];
       if (!d) return;
-      a.href = d.url;
+      if (!a.hasAttribute('data-keep')) a.href = d.url; // у лаунчера ссылка «последняя версия» уже в HTML
       var s = a.querySelector('small');
       if (s) s.textContent = d.size ? fmtSize(d.size) : '';
     });

@@ -94,6 +94,10 @@ jobs:
         with:
           path: dist
           merge-multiple: true
+      - name: Постоянные имена файлов (ссылка «последняя версия» на сайте не меняется между релизами)
+        run: |
+          cp dist/ShozitLauncher-v*-windows-setup.exe dist/ShozitLauncher-windows-setup.exe
+          cp dist/ShozitLauncher-v*-linux.AppImage dist/ShozitLauncher-linux.AppImage
       - uses: softprops/action-gh-release@v2
         with:
           name: Лаунчер ${{ github.ref_name }}
